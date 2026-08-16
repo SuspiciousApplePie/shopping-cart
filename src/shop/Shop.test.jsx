@@ -34,10 +34,42 @@ describe("Shop Component", () => {
 
   it("Displays the fetched products data", async () => {
     fetch.mockResolvedValueOnce({ ok: true, json: [resolvedObject] });
-    render(<Shop products={[resolvedObject]} />);
+    render(<Shop products={[resolvedObject]} loading={false} error={false} />);
 
     await waitFor(() => {
       expect(screen.getByText(resolvedObject.title)).toBeInTheDocument();
+    });
+  });
+
+  it("Shows loading state while products are loading", () => {
+    fetch(() => {
+      new Promise(() => []);
+    });
+
+    render(<Shop products={[]} loading={true} error={false} />);
+
+    expect(screen.getByText("Loading")).toBeInTheDocument();
+  });
+
+  it("Displays empty shopping list", async () => {
+    const emptyJSON = [];
+    const emptyMsg = "No products available.";
+    fetch.mockResolvedValueOnce({ ok: true, json: emptyJSON });
+    render(<Shop products={emptyJSON} loading={false} error={false} />);
+
+    await waitFor(() => {
+      expect(screen.getByText(emptyMsg)).toBeInTheDocument();
+    });
+  });
+
+  it("Displays error message when API call fails.", async () => {
+    const failedFetchMsg = "Something went wrong. Please try again.";
+
+    fetch.mockRejectedValueOnce(new Error(failedFetchMsg));
+    render(<Shop products={[]} loading={false} error={true} />);
+
+    await waitFor(() => {
+      expect(screen.getByText(failedFetchMsg)).toBeInTheDocument();
     });
   });
 });
