@@ -5,6 +5,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [quantity, setQuantity] = useState({});
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -24,7 +25,13 @@ function App() {
   }, []);
   return (
     <>
-      <Shop products={products} loading={loading} error={error} />
+      <Shop
+        products={products}
+        loading={loading}
+        error={error}
+        quantity={quantity}
+        setQuantity={setQuantity}
+      />
     </>
   );
 }

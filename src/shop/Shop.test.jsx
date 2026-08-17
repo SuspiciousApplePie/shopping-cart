@@ -24,8 +24,10 @@ describe("Shop Component", () => {
     },
   };
 
+  const testQuantity = { [resolvedObject.id]: 0 };
+
   it("Shop component appears", () => {
-    render(<Shop products={[resolvedObject]} />);
+    render(<Shop products={[resolvedObject]} quantity={testQuantity} />);
 
     expect(
       screen.getByRole("heading", { name: "Products" }),
@@ -34,7 +36,14 @@ describe("Shop Component", () => {
 
   it("Displays the fetched products data", async () => {
     fetch.mockResolvedValueOnce({ ok: true, json: [resolvedObject] });
-    render(<Shop products={[resolvedObject]} loading={false} error={false} />);
+    render(
+      <Shop
+        products={[resolvedObject]}
+        loading={false}
+        error={false}
+        quantity={testQuantity}
+      />,
+    );
 
     await waitFor(() => {
       expect(screen.getByText(resolvedObject.title)).toBeInTheDocument();
@@ -46,7 +55,14 @@ describe("Shop Component", () => {
       new Promise(() => []);
     });
 
-    render(<Shop products={[]} loading={true} error={false} />);
+    render(
+      <Shop
+        products={[]}
+        loading={true}
+        error={false}
+        quantity={testQuantity}
+      />,
+    );
 
     expect(screen.getByText("Loading")).toBeInTheDocument();
   });
@@ -55,7 +71,14 @@ describe("Shop Component", () => {
     const emptyJSON = [];
     const emptyMsg = "No products available.";
     fetch.mockResolvedValueOnce({ ok: true, json: emptyJSON });
-    render(<Shop products={emptyJSON} loading={false} error={false} />);
+    render(
+      <Shop
+        products={emptyJSON}
+        loading={false}
+        error={false}
+        quantity={testQuantity}
+      />,
+    );
 
     await waitFor(() => {
       expect(screen.getByText(emptyMsg)).toBeInTheDocument();
@@ -66,7 +89,14 @@ describe("Shop Component", () => {
     const failedFetchMsg = "Something went wrong. Please try again.";
 
     fetch.mockRejectedValueOnce(new Error(failedFetchMsg));
-    render(<Shop products={[]} loading={false} error={true} />);
+    render(
+      <Shop
+        products={[]}
+        loading={false}
+        error={true}
+        quantity={testQuantity}
+      />,
+    );
 
     await waitFor(() => {
       expect(screen.getByText(failedFetchMsg)).toBeInTheDocument();
