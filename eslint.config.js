@@ -8,6 +8,10 @@ import eslintConfigPrettier from "eslint-config-prettier";
 export default defineConfig([
   globalIgnores(["dist"]),
   {
+    rules: {
+      "no-console": "warn",
+      eqeqeq: "error",
+    },
     files: ["**/*.{js,jsx}"],
     extends: [
       js.configs.recommended,
