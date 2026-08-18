@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import Shop from "./Shop.jsx";
+import { useOutletContext } from "react-router";
 
 beforeEach(() => {
   globalThis.fetch = vi.fn();
@@ -8,6 +9,15 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.resetAllMocks();
+});
+
+vi.mock("react-router", async () => {
+  const actual = await vi.importActual("react-router");
+
+  return {
+    ...actual,
+    useOutletContext: vi.fn(),
+  };
 });
 
 describe("Shop Component", () => {
@@ -27,7 +37,14 @@ describe("Shop Component", () => {
   const testQuantity = { [resolvedObject.id]: 0 };
 
   it("Shop component appears", () => {
-    render(<Shop products={[resolvedObject]} quantity={testQuantity} />);
+    useOutletContext.mockReturnValue({
+      products: [],
+      loading: true,
+      error: false,
+      quantity: testQuantity,
+    });
+
+    render(<Shop />);
 
     expect(
       screen.getByRole("heading", { name: "Products" }),
@@ -36,14 +53,14 @@ describe("Shop Component", () => {
 
   it("Displays the fetched products data", async () => {
     fetch.mockResolvedValueOnce({ ok: true, json: [resolvedObject] });
-    render(
-      <Shop
-        products={[resolvedObject]}
-        loading={false}
-        error={false}
-        quantity={testQuantity}
-      />,
-    );
+
+    useOutletContext.mockReturnValue({
+      products: [resolvedObject],
+      loading: false,
+      error: false,
+      quantity: testQuantity,
+    });
+    render(<Shop />);
 
     await waitFor(() => {
       expect(screen.getByText(resolvedObject.title)).toBeInTheDocument();
@@ -55,14 +72,13 @@ describe("Shop Component", () => {
       new Promise(() => []);
     });
 
-    render(
-      <Shop
-        products={[]}
-        loading={true}
-        error={false}
-        quantity={testQuantity}
-      />,
-    );
+    useOutletContext.mockReturnValue({
+      products: [],
+      loading: true,
+      error: false,
+      quantity: testQuantity,
+    });
+    render(<Shop />);
 
     expect(screen.getByText("Loading")).toBeInTheDocument();
   });
@@ -71,14 +87,13 @@ describe("Shop Component", () => {
     const emptyJSON = [];
     const emptyMsg = "No products available.";
     fetch.mockResolvedValueOnce({ ok: true, json: emptyJSON });
-    render(
-      <Shop
-        products={emptyJSON}
-        loading={false}
-        error={false}
-        quantity={testQuantity}
-      />,
-    );
+    useOutletContext.mockReturnValue({
+      products: emptyJSON,
+      loading: false,
+      error: false,
+      quantity: testQuantity,
+    });
+    render(<Shop />);
 
     await waitFor(() => {
       expect(screen.getByText(emptyMsg)).toBeInTheDocument();
@@ -89,14 +104,15 @@ describe("Shop Component", () => {
     const failedFetchMsg = "Something went wrong. Please try again.";
 
     fetch.mockRejectedValueOnce(new Error(failedFetchMsg));
-    render(
-      <Shop
-        products={[]}
-        loading={false}
-        error={true}
-        quantity={testQuantity}
-      />,
-    );
+
+    useOutletContext.mockReturnValue({
+      products: [],
+      loading: false,
+      error: true,
+      quantity: testQuantity,
+    });
+
+    render(<Shop />);
 
     await waitFor(() => {
       expect(screen.getByText(failedFetchMsg)).toBeInTheDocument();

@@ -1,5 +1,5 @@
-import Shop from "./shop/Shop";
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -25,13 +25,7 @@ function App() {
   }, []);
   return (
     <>
-      <Shop
-        products={products}
-        loading={loading}
-        error={error}
-        quantity={quantity}
-        setQuantity={setQuantity}
-      />
+      <Outlet context={{ products, loading, error, quantity, setQuantity }} />
     </>
   );
 }
