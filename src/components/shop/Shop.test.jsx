@@ -42,6 +42,7 @@ describe("Shop Component", () => {
       loading: true,
       error: false,
       quantity: testQuantity,
+      cart: new Map(),
     });
 
     render(<Shop />);
@@ -59,6 +60,7 @@ describe("Shop Component", () => {
       loading: false,
       error: false,
       quantity: testQuantity,
+      cart: new Map(),
     });
     render(<Shop />);
 

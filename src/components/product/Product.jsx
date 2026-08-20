@@ -1,4 +1,4 @@
-function Product({ product, quantity, setQuantity }) {
+function Product({ product, quantity, setQuantity, cart, setCart }) {
   const updateValue = (newValue, id) => {
     setQuantity((prev) => {
       if (newValue >= 1) {
@@ -8,12 +8,36 @@ function Product({ product, quantity, setQuantity }) {
         const newObj = Object.fromEntries(
           Object.entries(prev).filter(([key]) => key === id),
         );
-
         return newObj;
       } else {
         return prev;
       }
     });
+  };
+
+  const addToCart = () => {
+    if (!cart.has(product.id)) {
+      setCart((prev) => {
+        const next = new Map(prev);
+        next.set(product.id, {
+          id: product.id,
+          title: product.title,
+          totalPrize: product.price * quantity.id,
+          quantity: quantity.id,
+        });
+        return next;
+      });
+    }
+  };
+
+  const removeToCart = () => {
+    if (cart.has(product.id)) {
+      setCart((prev) => {
+        const next = new Map(prev);
+        next.delete(product.id);
+        return next;
+      });
+    }
   };
 
   return (
@@ -25,45 +49,65 @@ function Product({ product, quantity, setQuantity }) {
           <span>${product.price}</span>
           <br />
           <span>{product.rating.rate}</span>
+          <br />
+          <span>{product.rating.count} Reviews</span>
         </figcaption>
       </figure>
-      <form action="post">
-        <div>
-          <button
-            type="button"
-            aria-label="Lower quantity"
-            onClick={() => {
-              const newValue = (quantity[product.id] || 0) - 1;
-              updateValue(newValue, product.id);
-            }}
-          >
-            -
-          </button>
-          <label htmlFor="quantity">
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min={1}
-              value={quantity[product.id] || ""}
-              onChange={(e) => {
-                updateValue(+e.target.value, product.id);
+      {!cart.has(product.id) ? (
+        <form
+          method="post"
+          onSubmit={(e) => {
+            e.preventDefault();
+            addToCart();
+          }}
+        >
+          <div>
+            <button
+              type="button"
+              aria-label="Lower quantity"
+              onClick={() => {
+                const newValue = (quantity[product.id] || 0) - 1;
+                updateValue(newValue, product.id);
               }}
-            />
-          </label>
-          <button
-            type="button"
-            aria-label="Higher quantity"
-            onClick={() => {
-              const newValue = (quantity[product.id] || 0) + 1;
-              updateValue(newValue, product.id);
-            }}
-          >
-            +
-          </button>
-        </div>
-        <button type="submit">Add to Cart</button>
-      </form>
+            >
+              -
+            </button>
+            <label htmlFor="quantity">
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min={1}
+                value={quantity[product.id] || ""}
+                onChange={(e) => {
+                  updateValue(+e.target.value, product.id);
+                }}
+                required
+              />
+            </label>
+            <button
+              type="button"
+              aria-label="Higher quantity"
+              onClick={() => {
+                const newValue = (quantity[product.id] || 0) + 1;
+                updateValue(newValue, product.id);
+              }}
+            >
+              +
+            </button>
+          </div>
+          <button type="submit">Add to Cart</button>
+        </form>
+      ) : (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            removeToCart();
+          }}
+        >
+          <button type="submit">Remove</button>
+        </form>
+      )}
     </div>
   );
 }

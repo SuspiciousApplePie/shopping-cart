@@ -6,6 +6,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState({});
+  const [cart, setCart] = useState(new Map());
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -25,7 +26,17 @@ function App() {
   }, []);
   return (
     <>
-      <Outlet context={{ products, loading, error, quantity, setQuantity }} />
+      <Outlet
+        context={{
+          products,
+          loading,
+          error,
+          quantity,
+          setQuantity,
+          cart,
+          setCart,
+        }}
+      />
     </>
   );
 }

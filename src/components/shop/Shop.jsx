@@ -2,8 +2,9 @@ import Product from "../product/Product.jsx";
 import { useOutletContext } from "react-router";
 
 function Shop() {
-  const { products, loading, error, quantity, setQuantity } =
+  const { products, loading, error, quantity, setQuantity, cart, setCart } =
     useOutletContext();
+
   const displayedProducts = products.map((product) => {
     return (
       <Product
@@ -11,6 +12,8 @@ function Shop() {
         product={product}
         quantity={quantity}
         setQuantity={setQuantity}
+        cart={cart}
+        setCart={setCart}
       />
     );
   });
