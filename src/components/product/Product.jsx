@@ -21,6 +21,7 @@ function Product({ product, quantity, setQuantity, cart, setCart }) {
         const next = new Map(prev);
         next.set(product.id, {
           id: product.id,
+          image: product.image,
           title: product.title,
           totalPrice: +product.price * quantity[product.id],
           quantity: quantity.id,
