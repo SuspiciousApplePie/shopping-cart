@@ -22,7 +22,7 @@ function Product({ product, quantity, setQuantity, cart, setCart }) {
         next.set(product.id, {
           id: product.id,
           title: product.title,
-          totalPrize: product.price * quantity.id,
+          totalPrice: +product.price * quantity[product.id],
           quantity: quantity.id,
         });
         return next;
