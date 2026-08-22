@@ -1,4 +1,23 @@
-function CartItem({ item }) {
+const constant = {
+  ADD: "add",
+  SUBTRACT: "subtract",
+};
+
+function CartItem({ item, removeFromCart, setCart }) {
+  const increaseQuantity = (type) => {
+    if (item.quantity === 1 && type === constant.SUBTRACT) return;
+    setCart((prev) => {
+      const next = new Map(prev);
+      const cartItem = next.get(item.id);
+      if (type === constant.ADD) {
+        next.set(item.id, { ...cartItem, quantity: cartItem.quantity + 1 });
+      } else {
+        next.set(item.id, { ...cartItem, quantity: cartItem.quantity - 1 });
+      }
+      return next;
+    });
+  };
+
   return (
     <figure>
       <div>
