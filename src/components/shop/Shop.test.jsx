@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import Shop from "./Shop.jsx";
 import { useOutletContext } from "react-router";
@@ -64,9 +64,7 @@ describe("Shop Component", () => {
     });
     render(<Shop />);
 
-    await waitFor(() => {
-      expect(screen.getByText(resolvedObject.title)).toBeInTheDocument();
-    });
+    expect(await screen.findByText(resolvedObject.title)).toBeInTheDocument();
   });
 
   it("Shows loading state while products are loading", () => {
@@ -97,9 +95,7 @@ describe("Shop Component", () => {
     });
     render(<Shop />);
 
-    await waitFor(() => {
-      expect(screen.getByText(emptyMsg)).toBeInTheDocument();
-    });
+    expect(await screen.findByText(emptyMsg)).toBeInTheDocument();
   });
 
   it("Displays error message when API call fails.", async () => {
@@ -116,8 +112,6 @@ describe("Shop Component", () => {
 
     render(<Shop />);
 
-    await waitFor(() => {
-      expect(screen.getByText(failedFetchMsg)).toBeInTheDocument();
-    });
+    expect(await screen.findByText(failedFetchMsg)).toBeInTheDocument();
   });
 });

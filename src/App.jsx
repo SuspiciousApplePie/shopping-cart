@@ -8,6 +8,16 @@ function App() {
   const [quantity, setQuantity] = useState({});
   const [cart, setCart] = useState(new Map());
 
+  const removeFromCart = (id) => {
+    if (cart.has(id)) {
+      setCart((prev) => {
+        const next = new Map(prev);
+        next.delete(id);
+        return next;
+      });
+    }
+  };
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => {
@@ -35,6 +45,7 @@ function App() {
           setQuantity,
           cart,
           setCart,
+          removeFromCart,
         }}
       />
     </>

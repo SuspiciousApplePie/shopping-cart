@@ -7,6 +7,15 @@ import { useState } from "react";
 function TestProduct({ resolvedObject }) {
   const [quantity, setQuantity] = useState({});
   const [cart, setCart] = useState(new Map());
+  const removeFromCart = (id) => {
+    if (cart.has(id)) {
+      setCart((prev) => {
+        const next = new Map(prev);
+        next.delete(id);
+        return next;
+      });
+    }
+  };
 
   return (
     <Product
@@ -15,6 +24,7 @@ function TestProduct({ resolvedObject }) {
       setQuantity={setQuantity}
       cart={cart}
       setCart={setCart}
+      removeFromCart={removeFromCart}
     />
   );
 }
@@ -158,7 +168,7 @@ describe("Product component", () => {
     await user.click(screen.getByRole("button", { name: increase }));
     await user.click(screen.getByRole("button", { name: addToCart }));
     await user.click(screen.getByRole("button", { name: remove }));
-
+    screen.debug();
     expect(screen.getByRole("button", { name: addToCart })).toBeInTheDocument();
   });
 });

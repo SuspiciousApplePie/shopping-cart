@@ -1,4 +1,11 @@
-function Product({ product, quantity, setQuantity, cart, setCart }) {
+function Product({
+  product,
+  quantity,
+  setQuantity,
+  cart,
+  setCart,
+  removeFromCart,
+}) {
   const updateValue = (newValue, id) => {
     setQuantity((prev) => {
       if (newValue >= 1) {
@@ -23,19 +30,15 @@ function Product({ product, quantity, setQuantity, cart, setCart }) {
           id: product.id,
           image: product.image,
           title: product.title,
-          totalPrice: +product.price * quantity[product.id],
-          quantity: quantity.id,
+          price: product.price,
+          quantity: quantity[product.id],
         });
         return next;
       });
-    }
-  };
 
-  const removeToCart = () => {
-    if (cart.has(product.id)) {
-      setCart((prev) => {
-        const next = new Map(prev);
-        next.delete(product.id);
+      setQuantity((prev) => {
+        const next = { ...prev };
+        delete next[product.id];
         return next;
       });
     }
@@ -103,7 +106,7 @@ function Product({ product, quantity, setQuantity, cart, setCart }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            removeToCart();
+            removeFromCart(product.id);
           }}
         >
           <button type="submit">Remove</button>
