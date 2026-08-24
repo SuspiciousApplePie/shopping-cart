@@ -4,7 +4,11 @@ function Homepage() {
   const { products } = useOutletContext();
   const carousel = products.map((product) => {
     return (
-      <img key={product.id} src={product.image} alt={`${product.title} name`} />
+      <img
+        key={product.id}
+        src={product.image}
+        alt={`${product.title} image`}
+      />
     );
   });
   return (
