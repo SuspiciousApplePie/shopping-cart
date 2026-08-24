@@ -29,7 +29,9 @@ function App() {
       .then((fetchedData) => {
         setProducts(fetchedData);
       })
-      .catch(() => setError(true))
+      .catch(() => {
+        setError(true);
+      })
       .finally(() => {
         setLoading(false);
       });
