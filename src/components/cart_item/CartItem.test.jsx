@@ -58,7 +58,9 @@ describe("Cart Item component", () => {
     );
     await user.click(screen.getByRole("button", { name: "Increase quantity" }));
     expect(screen.getByText("Quantity: 3")).toBeInTheDocument();
-    expect(screen.getByText(`Total: $${109.5 * 3}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`Total: $${(109.5 * 3).toFixed(2)}`),
+    ).toBeInTheDocument();
   });
 
   it("User successfully decrease quantity", async () => {
@@ -71,7 +73,9 @@ describe("Cart Item component", () => {
     );
     await user.click(screen.getByRole("button", { name: "Decrease quantity" }));
     expect(screen.getByText("Quantity: 1")).toBeInTheDocument();
-    expect(screen.getByText(`Total: $${109.5}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`Total: $${(109.5).toFixed(2)}`),
+    ).toBeInTheDocument();
   });
 
   it("Item quantity does not get less than 1", async () => {
@@ -95,6 +99,8 @@ describe("Cart Item component", () => {
 
     expect(screen.queryByText("Quantity: 0")).not.toBeInTheDocument();
     screen.debug();
-    expect(screen.getByText(`Total: $${109.5}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`Total: $${(109.5).toFixed(2)}`),
+    ).toBeInTheDocument();
   });
 });

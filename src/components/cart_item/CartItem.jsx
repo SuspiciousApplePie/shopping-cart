@@ -37,7 +37,7 @@ function CartItem({ item, removeFromCart, setCart }) {
       </div>
       <div>
         <span>{`Quantity: ${item.quantity}`}</span>
-        <span>Total: ${item.price * item.quantity}</span>
+        <span>Total: ${(item.price * item.quantity).toFixed(2)}</span>
       </div>
       <div>
         <button
