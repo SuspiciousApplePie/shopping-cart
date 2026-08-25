@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import App from "./App.jsx";
+import { MemoryRouter } from "react-router";
 
 describe("something truthy and falsy", () => {
   it("true to be true", () => {
@@ -14,7 +15,11 @@ describe("something truthy and falsy", () => {
 
 describe("App", () => {
   it("renders headline", () => {
-    render(<App title="React" />);
+    render(
+      <MemoryRouter>
+        <App title="React" />
+      </MemoryRouter>,
+    );
 
     screen.debug();
 

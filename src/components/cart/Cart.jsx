@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router";
 import CartItem from "../cart_item/CartItem";
 
 function Cart() {
-  const { cart, removeFromCart } = useOutletContext();
+  const { cart, removeFromCart, setCart } = useOutletContext();
 
   const cartItems = [...cart.keys()].map((itemId) => {
     return (
@@ -10,6 +10,7 @@ function Cart() {
         key={itemId}
         item={cart.get(itemId)}
         removeFromCart={removeFromCart}
+        setCart={setCart}
       />
     );
   });

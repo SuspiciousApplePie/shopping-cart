@@ -1,19 +1,19 @@
-const constant = {
-  ADD: "add",
-  SUBTRACT: "subtract",
-};
-
 function CartItem({ item, removeFromCart, setCart }) {
-  const increaseQuantity = (type) => {
-    if (item.quantity === 1 && type === constant.SUBTRACT) return;
+  const increaseQuantity = () => {
     setCart((prev) => {
       const next = new Map(prev);
       const cartItem = next.get(item.id);
-      if (type === constant.ADD) {
-        next.set(item.id, { ...cartItem, quantity: cartItem.quantity + 1 });
-      } else {
-        next.set(item.id, { ...cartItem, quantity: cartItem.quantity - 1 });
-      }
+      next.set(item.id, { ...cartItem, quantity: cartItem.quantity + 1 });
+      return next;
+    });
+  };
+
+  const decreaseQuantity = () => {
+    if (item.quantity <= 1) return;
+    setCart((prev) => {
+      const next = new Map(prev);
+      const cartItem = next.get(item.id);
+      next.set(item.id, { ...cartItem, quantity: cartItem.quantity - 1 });
       return next;
     });
   };
@@ -41,7 +41,7 @@ function CartItem({ item, removeFromCart, setCart }) {
       </div>
       <div>
         <button
-          onClick={() => increaseQuantity(constant.SUBTRACT)}
+          onClick={decreaseQuantity}
           type="button"
           aria-label="Decrease quantity"
         >
@@ -49,7 +49,7 @@ function CartItem({ item, removeFromCart, setCart }) {
         </button>
         <button
           type="button"
-          onClick={() => increaseQuantity(constant.ADD)}
+          onClick={increaseQuantity}
           aria-label="Increase quantity"
         >
           +
