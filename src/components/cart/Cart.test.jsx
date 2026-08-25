@@ -47,4 +47,14 @@ describe("Cart component", () => {
       screen.getByRole("heading", { name: sampleCartItem.title }),
     ).toBeInTheDocument();
   });
+
+  it("Displays empty message indicator when there is nothing in cart", () => {
+    useOutletContext.mockReturnValue({
+      cart: new Map(),
+    });
+
+    render(<Cart />);
+
+    expect(screen.getByText("No items in cart.")).toBeInTheDocument();
+  });
 });

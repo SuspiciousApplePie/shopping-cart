@@ -4,16 +4,21 @@ import CartItem from "../cart_item/CartItem";
 function Cart() {
   const { cart, removeFromCart, setCart } = useOutletContext();
 
-  const cartItems = [...cart.keys()].map((itemId) => {
-    return (
-      <CartItem
-        key={itemId}
-        item={cart.get(itemId)}
-        removeFromCart={removeFromCart}
-        setCart={setCart}
-      />
+  const cartItems =
+    cart.size === 0 ? (
+      <p>No items in cart.</p>
+    ) : (
+      [...cart.keys()].map((itemId) => {
+        return (
+          <CartItem
+            key={itemId}
+            item={cart.get(itemId)}
+            removeFromCart={removeFromCart}
+            setCart={setCart}
+          />
+        );
+      })
     );
-  });
 
   return (
     <main>
