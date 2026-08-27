@@ -21,10 +21,10 @@ function Cart() {
     );
 
   return (
-    <main>
+    <div>
       <h2>Cart</h2>
       <section>{cartItems}</section>
-    </main>
+    </div>
   );
 }
 

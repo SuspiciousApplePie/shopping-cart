@@ -28,7 +28,7 @@ function Shop() {
   });
 
   return (
-    <main>
+    <div>
       <h2>Products</h2>
       <section>
         {loading ? (
@@ -41,7 +41,7 @@ function Shop() {
           <p>No products available.</p>
         )}
       </section>
-    </main>
+    </div>
   );
 }
 

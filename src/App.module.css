@@ -1,0 +1,9 @@
+.main {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  transition: grid-template-columns 0.3s ease;
+}
+
+.main.hide {
+  grid-template-columns: 3rem 1fr;
+}

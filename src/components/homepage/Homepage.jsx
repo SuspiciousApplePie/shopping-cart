@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useOutletContext } from "react-router";
+import styles from "./Homepage.module.css";
 function Homepage() {
   const { products } = useOutletContext();
   const carousel = products.map((product) => {
@@ -12,7 +13,7 @@ function Homepage() {
     );
   });
   return (
-    <main>
+    <div className={styles.mainContent}>
       <div>
         <h1>Welcome to the Shopping Cart</h1>
         <h3>Shop and buy items in shopping cart</h3>
@@ -21,7 +22,7 @@ function Homepage() {
         </button>
       </div>
       <div>{carousel}</div>
-    </main>
+    </div>
   );
 }
 

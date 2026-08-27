@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar/Sidebar";
+import styles from "./App.module.css";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -8,6 +10,12 @@ function App() {
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState({});
   const [cart, setCart] = useState(new Map());
+  const [sidebarToggle, setSidebarToggle] = useState(true);
+
+  const toggleSidebar = () => {
+    if (sidebarToggle) setSidebarToggle(false);
+    else setSidebarToggle(true);
+  };
 
   const removeFromCart = (id) => {
     if (cart.has(id)) {
@@ -40,18 +48,25 @@ function App() {
   return (
     <>
       <Header />
-      <Outlet
-        context={{
-          products,
-          loading,
-          error,
-          quantity,
-          setQuantity,
-          cart,
-          setCart,
-          removeFromCart,
-        }}
-      />
+      <main
+        className={
+          sidebarToggle ? styles.main : `${styles.main} ${styles.hide}`
+        }
+      >
+        <Sidebar sidebarToggle={sidebarToggle} toggleSidebar={toggleSidebar} />
+        <Outlet
+          context={{
+            products,
+            loading,
+            error,
+            quantity,
+            setQuantity,
+            cart,
+            setCart,
+            removeFromCart,
+          }}
+        />
+      </main>
     </>
   );
 }

@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+.sidebar {
+  font-family: "Roboto Mono", monospace;
+  color: var(--color-1);
+  font-size: var(--size-1);
+  padding: var(--space-1);
+  padding-left: 0;
+  display: grid;
+  text-decoration: none;
+  grid-template-columns: 1fr 3rem;
+}
+
+.toggleBtnWrapper {
+  padding: var(--space-2);
+}
+
+.sidebar .toggleBtn {
+  background-color: var(--color-2);
+  border: 1px solid var(--color-1);
+  border-radius: 2px;
+  fill: var(--color-1);
+  cursor: pointer;
+}
+
+.toggleBtn:hover {
+  background-color: var(--color-3);
+  transition: background-color 0.3 ease-out;
+}
+
+.navigationList {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navItem {
+  border-bottom: 1px solid var(--color-1);
+  padding: calc(var(--space-1) - 3px);
+  color: var(--color-1);
+  fill: var(--color-1);
+}
+
+.navItem a {
+  padding: var(--space-2);
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-1);
+}
+
+.navItem:has(a:not(.active):hover) {
+  color: var(--color-1);
+  fill: var(--color-1);
+  background-color: var(--color-3);
+  transition: background-color 0.2s ease-out;
+}
+
+.navItem:has(a.active) {
+  background-color: var(--color-1);
+  color: var(--color-2);
+  fill: var(--color-2);
+  transition: background-color 0.3s ease-out;
+}
+
+.navItem a.active {
+  color: var(--color-2);
+}
