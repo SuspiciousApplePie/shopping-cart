@@ -10,7 +10,7 @@
 .info figcaption {
   padding: var(--space-2);
   font-size: var(--color-1);
-  font-size: 100;
+  font-weight: 100;
 }
 
 .info h3 {
