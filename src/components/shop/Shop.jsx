@@ -1,5 +1,6 @@
 import Product from "../product/Product.jsx";
 import { useOutletContext } from "react-router";
+import styles from "./Shop.module.css";
 
 function Shop() {
   const {
@@ -28,9 +29,9 @@ function Shop() {
   });
 
   return (
-    <div>
+    <div className={styles.shop}>
       <h2>Products</h2>
-      <section>
+      <section className={styles.productList}>
         {loading ? (
           <p>Loading</p>
         ) : error ? (

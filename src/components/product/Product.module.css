@@ -1,0 +1,107 @@
+.product {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.info {
+  display: grid;
+}
+
+.info figcaption {
+  padding: var(--space-2);
+  font-size: var(--color-1);
+  font-size: 100;
+}
+
+.info h3 {
+  font-size: calc(var(--size-1) + 2px);
+  font-weight: 600;
+}
+
+.info img {
+  justify-self: center;
+  border: 2px solid var(--color-1);
+  border-radius: 4px;
+  padding: var(--space-2);
+}
+
+.info .rating,
+.info .reviews,
+.info .price {
+  display: flex;
+  align-items: center;
+  fill: var(--color-1);
+  gap: var(--space-1);
+}
+
+.info svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.cartInput {
+  display: flex;
+  padding: var(--space-1);
+  justify-content: end;
+  gap: var(--space-1);
+}
+
+.cartInput label {
+  width: 30px;
+}
+
+.cartInput input {
+  border: none;
+  border-bottom: 2px solid var(--color-1);
+  background-color: var(--color-2);
+  width: 100%;
+  appearance: textfield;
+  text-align: end;
+  color: var(--color-1);
+}
+
+.cartInput button {
+  cursor: pointer;
+  color: var(--color-1);
+  border: 1px solid var(--color-1);
+  border-radius: 2px;
+}
+
+.cartInput button:hover {
+  color: var(--color-2);
+  background-color: var(--color-1);
+}
+
+.product button[type="submit"] {
+  color: var(--color-2);
+  background-color: var(--color-1);
+  width: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  gap: var(--space-1);
+  cursor: pointer;
+  fill: var(--color-2);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.product button[type="submit"] svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.product button[type="submit"]:hover {
+  fill: var(--color-1);
+  color: var(--color-1);
+  background-color: var(--color-2);
+  border-color: var(--color-1);
+}
+
+.cartInput input::-webkit-inner-spin-button,
+.cartInput input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
