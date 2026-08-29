@@ -1,3 +1,5 @@
+import styles from "./CartItem.module.css";
+
 function CartItem({ item, removeFromCart, setCart }) {
   const increaseQuantity = () => {
     setCart((prev) => {
@@ -19,10 +21,14 @@ function CartItem({ item, removeFromCart, setCart }) {
   };
 
   return (
-    <figure>
-      <div>
-        <h3>{item.title}</h3>
-        <img src={item.image} alt={`${item.title} image`} />
+    <figure className={styles.cartItem}>
+      <div className={styles.imgWrapper}>
+        <img
+          src={item.image}
+          alt={`${item.title} image`}
+          height={300}
+          width={250}
+        />
         <form
           action=""
           onSubmit={(e) => {
@@ -31,15 +37,22 @@ function CartItem({ item, removeFromCart, setCart }) {
           }}
         >
           <button type="submit" aria-label="Remove">
-            X
+            <svg
+              className={styles.removeBtn}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+            >
+              <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
           </button>
         </form>
       </div>
-      <div>
+      <figcaption className={styles.cartItemInfo}>
+        <h3>{item.title}</h3>
         <span>{`Quantity: ${item.quantity}`}</span>
         <span>Total: ${(item.price * item.quantity).toFixed(2)}</span>
-      </div>
-      <div>
+      </figcaption>
+      <div className={styles.cartButtons}>
         <button
           onClick={decreaseQuantity}
           type="button"

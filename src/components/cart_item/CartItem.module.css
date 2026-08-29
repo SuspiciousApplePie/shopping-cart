@@ -1,0 +1,76 @@
+.cartItem {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-content: center;
+}
+
+.cartItem .removeBtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-1);
+}
+
+.cartItemInfo {
+  display: grid;
+  grid-template-rows: 1fr repeat(2, auto);
+}
+
+.cartItemInfo h3 {
+  font-size: calc(var(--size-1) + 2px);
+  font-weight: 500;
+}
+
+.cartItemInfo span {
+  font-size: var(--size-1);
+}
+
+.cartItem .imgWrapper {
+  position: relative;
+  height: 300px;
+}
+
+.cartItem > * {
+  width: 250px;
+}
+
+.imgWrapper img {
+  justify-self: center;
+  border: 2px solid var(--color-1);
+  border-radius: 4px;
+  padding: var(--space-2);
+  width: 100%;
+  height: 100%;
+}
+
+.imgWrapper button {
+  padding: var(--space-1);
+}
+
+.imgWrapper form {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.imgWrapper button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cartButtons {
+  display: flex;
+  gap: var(--space-1);
+  justify-content: flex-end;
+}
+
+.cartButtons button {
+  border: 1px solid var(--color-1);
+  color: var(--color-1);
+}
+
+.cartButtons button:hover {
+  background-color: var(--color-1);
+  color: var(--color-2);
+  border-radius: 2px;
+}
