@@ -56,7 +56,6 @@
 .imgWrapper button {
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
 
 .cartButtons {
@@ -74,4 +73,8 @@
   background-color: var(--color-1);
   color: var(--color-2);
   border-radius: 2px;
+}
+
+button {
+  cursor: pointer;
 }
