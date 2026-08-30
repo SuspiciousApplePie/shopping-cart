@@ -80,7 +80,9 @@ describe("Shop Component", () => {
     });
     render(<Shop />);
 
-    expect(screen.getByText("Loading")).toBeInTheDocument();
+    expect(
+      screen.getByRole("paragraph", { name: "Loading" }),
+    ).toBeInTheDocument();
   });
 
   it("Displays empty shopping list", async () => {

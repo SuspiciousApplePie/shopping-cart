@@ -1,30 +1,32 @@
 import { useOutletContext } from "react-router";
 import CartItem from "../cart_item/CartItem";
 import styles from "./Cart.module.css";
+import msgStyles from "../../App.module.css";
 
 function Cart() {
   const { cart, removeFromCart, setCart } = useOutletContext();
 
-  const cartItems =
-    cart.size === 0 ? (
-      <p>No items in cart.</p>
-    ) : (
-      [...cart.keys()].map((itemId) => {
-        return (
-          <CartItem
-            key={itemId}
-            item={cart.get(itemId)}
-            removeFromCart={removeFromCart}
-            setCart={setCart}
-          />
-        );
-      })
+  const cartItems = [...cart.keys()].map((itemId) => {
+    return (
+      <CartItem
+        key={itemId}
+        item={cart.get(itemId)}
+        removeFromCart={removeFromCart}
+        setCart={setCart}
+      />
     );
+  });
 
   return (
     <div className={styles.cart}>
       <h2>Cart</h2>
-      <section className={styles.cartList}>{cartItems}</section>
+      {cart.size === 0 ? (
+        <section className={styles.msgWrapper}>
+          <p className={msgStyles.message}>No items in cart.</p>
+        </section>
+      ) : (
+        <section className={styles.cartList}>{cartItems}</section>
+      )}
     </div>
   );
 }

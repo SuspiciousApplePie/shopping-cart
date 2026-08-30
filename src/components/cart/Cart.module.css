@@ -12,13 +12,18 @@
 .cart {
   animation: fadeInOut 0.4s ease-out;
   font-family: "Space Grotesk", sans-serif;
-  z-index: -1;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .cart h2 {
   padding: var(--space-1);
   color: var(--color-1);
   border-bottom: 2px solid var(--color-1);
+}
+
+.msgWrapper {
+  display: grid;
 }
 
 .cartList {

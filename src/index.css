@@ -90,6 +90,11 @@ h6 {
   --color-3: #d9d4de;
 }
 
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
 body,
 button {
   background-color: var(--color-2);

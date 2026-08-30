@@ -18,6 +18,7 @@
 .cartItemInfo h3 {
   font-size: calc(var(--size-1) + 2px);
   font-weight: 500;
+  align-self: center;
 }
 
 .cartItemInfo span {

@@ -2,7 +2,7 @@
 .homepage {
   animation: fadeInOut 0.4s ease-out;
   will-change: contents;
-  z-index: -1;
+  padding: var(--space-2) var(--space-2) 0 0;
 }
 
 @keyframes fadeInOut {
