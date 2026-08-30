@@ -12,6 +12,7 @@
 .cart {
   animation: fadeInOut 0.4s ease-out;
   font-family: "Space Grotesk", sans-serif;
+  z-index: -1;
 }
 
 .cart h2 {

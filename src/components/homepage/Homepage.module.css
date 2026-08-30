@@ -2,6 +2,7 @@
 .homepage {
   animation: fadeInOut 0.4s ease-out;
   will-change: contents;
+  z-index: -1;
 }
 
 @keyframes fadeInOut {

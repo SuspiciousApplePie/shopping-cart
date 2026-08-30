@@ -3,4 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-1) var(--space-2);
+  border-bottom: 2px solid var(--color-1);
+  position: sticky;
+  top: 0;
+  color: var(--color-1);
+  font-family: "Space Grotesk", sans-serif;
+  background-color: var(--color-2);
+}
+
+.header h1 {
+  font-size: var(--size-3);
 }

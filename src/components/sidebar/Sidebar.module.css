@@ -2,13 +2,12 @@
   font-family: "Roboto Mono", monospace;
   color: var(--color-1);
   font-size: var(--size-1);
-  padding: var(--space-1);
   padding-left: 0;
   display: grid;
   text-decoration: none;
   grid-template-columns: 1fr 3rem;
   position: sticky;
-  top: 0;
+  top: var(--header-height);
   align-self: start;
 }
 
