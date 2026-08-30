@@ -3,12 +3,12 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-1) var(--space-2);
-  border-bottom: 2px solid var(--color-1);
+  border-bottom: var(--space-2) solid var(--color-2);
   position: sticky;
   top: 0;
-  color: var(--color-1);
-  font-family: "Space Grotesk", sans-serif;
-  background-color: var(--color-2);
+  color: var(--color-2);
+  font-family: "Roboto Mono", monospace;
+  background-color: var(--color-1);
 }
 
 .header h1 {
