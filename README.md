@@ -1,16 +1,75 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a shopping cart it simulates selecting and adding product to cart.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Add Product to Cart
+1. Update product quantity to buy
+1. Remove product from cart
+1. Navigation to move across pages
 
-## React Compiler
+## Tools Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. React.js
+1. JavaScript
+1. HTML
+1. CSS Modules
+1. Vitest
+1. RTL
+1. React Router
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+git clone https://github.com/SuspiciousApplePie/shopping-cart.git
+cd shopping_cart
+npm install
+npm run dev
+```
+
+## File Structure
+
+```
+src/
+├── App.jsx
+├── App.module.css
+├── App.test.jsx
+├── assets
+│   ├── hero.png
+│   ├── react.svg
+│   └── vite.svg
+├── components
+│   ├── cart
+│   │   ├── Cart.jsx
+│   │   ├── Cart.module.css
+│   │   ├── Cart.test.jsx
+│   │   └── integ_test.txt
+│   ├── cart_item
+│   │   ├── CartItem.jsx
+│   │   ├── CartItem.module.css
+│   │   └── CartItem.test.jsx
+│   ├── header
+│   │   ├── Header.jsx
+│   │   ├── Header.module.css
+│   │   └── Header.test.jsx
+│   ├── homepage
+│   │   ├── Homepage.jsx
+│   │   ├── Homepage.module.css
+│   │   └── Homepage.test.jsx
+│   ├── product
+│   │   ├── Product.jsx
+│   │   ├── Product.module.css
+│   │   └── Product.test.jsx
+│   ├── shop
+│   │   ├── Shop.jsx
+│   │   ├── Shop.module.css
+│   │   └── Shop.test.jsx
+│   └── sidebar
+│       ├── Sidebar.jsx
+│       ├── Sidebar.module.css
+│       └── Sidebar.test.jsx
+├── index.css
+└── main.jsx
+
+```
