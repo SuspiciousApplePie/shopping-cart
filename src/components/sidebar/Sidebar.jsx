@@ -3,7 +3,11 @@ import styles from "./Sidebar.module.css";
 
 function Sidebar({ sidebarToggle, toggleSidebar }) {
   return (
-    <nav className={styles.sidebar}>
+    <nav
+      className={
+        sidebarToggle ? styles.sidebar : `${styles.sidebar} ${styles.hide}`
+      }
+    >
       <ul className={styles.navigationList} inert={!sidebarToggle && true}>
         <li className={styles.navItem}>
           <NavLink

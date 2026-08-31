@@ -3,6 +3,7 @@
   grid-template-columns: 300px 1fr;
   transition: grid-template-columns 0.3s ease;
   z-index: -1;
+  position: relative;
 }
 
 .main.hide {
@@ -16,4 +17,12 @@
   color: var(--color-1);
   font-size: var(--size-1);
   font-weight: 600;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .main,
+  .main.hide {
+    grid-template-columns: 1fr;
+    padding-left: 3rem;
+  }
 }
