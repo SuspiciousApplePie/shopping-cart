@@ -67,7 +67,11 @@ function App() {
           sidebarToggle ? styles.main : `${styles.main} ${styles.hide}`
         }
       >
-        <Sidebar sidebarToggle={sidebarToggle} toggleSidebar={toggleSidebar} />
+        <Sidebar
+          sidebarToggle={sidebarToggle}
+          toggleSidebar={toggleSidebar}
+          cart={cart}
+        />
         <Outlet
           context={{
             products,

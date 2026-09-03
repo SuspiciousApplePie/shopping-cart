@@ -62,6 +62,12 @@
   background-color: var(--color-3);
 }
 
+.navItem:has(a:not(.active):hover) .cartItemCount {
+  color: var(--color-1);
+  border: 1px solid var(--color-1);
+  background-color: var(--color-3);
+}
+
 .navItem:has(a.active) {
   background-color: var(--color-1);
   color: var(--color-2);
@@ -70,6 +76,21 @@
 
 .navItem a.active {
   color: var(--color-2);
+}
+
+a.active .cartItemCount {
+  background-color: var(--color-2);
+  color: var(--color-1);
+  border: none;
+}
+
+.cartItemCount {
+  font-family: "Space Grotesk", sans-serif;
+  background-color: var(--color-1);
+  color: var(--color-2);
+  padding: 2px 8px;
+  border-radius: 30px;
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {

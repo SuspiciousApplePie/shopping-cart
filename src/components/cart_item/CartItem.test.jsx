@@ -44,7 +44,6 @@ describe("Cart Item component", () => {
     );
 
     await user.click(screen.getByRole("button", { name: "Remove" }));
-
     expect(screen.queryByRole("figure")).not.toBeInTheDocument();
   });
 
