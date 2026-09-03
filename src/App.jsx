@@ -10,7 +10,9 @@ function App() {
   const [error, setError] = useState(false);
   const [quantity, setQuantity] = useState({});
   const [cart, setCart] = useState(new Map());
-  const [sidebarToggle, setSidebarToggle] = useState(true);
+  const [sidebarToggle, setSidebarToggle] = useState(() => {
+    return window.innerWidth > 768 ? true : false;
+  });
 
   const toggleSidebar = () => {
     if (sidebarToggle) setSidebarToggle(false);
@@ -44,6 +46,18 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    const desktopSize = window.matchMedia("(min-width: 769px)");
+    const watchScreenSIze = (e) => {
+      setSidebarToggle(e.macthes);
+    };
+
+    desktopSize.addEventListener("change", watchScreenSIze);
+    return () => {
+      window.removeEventListener("change", watchScreenSIze);
+    };
   }, []);
   return (
     <>
