@@ -51,7 +51,7 @@ function App() {
   useEffect(() => {
     const desktopSize = window.matchMedia("(min-width: 769px)");
     const watchScreenSIze = (e) => {
-      setSidebarToggle(e.macthes);
+      setSidebarToggle(e.matches);
     };
 
     desktopSize.addEventListener("change", watchScreenSIze);

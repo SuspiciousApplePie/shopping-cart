@@ -72,7 +72,7 @@
   color: var(--color-2);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .sidebar {
     position: fixed;
     transform: translateX(calc(0));
