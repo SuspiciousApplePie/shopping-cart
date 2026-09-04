@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 function Header() {
   useEffect(() => {
@@ -25,7 +26,9 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h1>Shopping Cart</h1>
+      <Link>
+        <h1>Shopping Cart</h1>
+      </Link>
     </header>
   );
 }
