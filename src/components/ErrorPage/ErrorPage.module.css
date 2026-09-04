@@ -1,0 +1,27 @@
+.error {
+  font-family: "Space Grotesk", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color-1);
+  gap: var(--space-2);
+}
+
+.errTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.errorIcon {
+  fill: var(--color-1);
+  height: var(--size-3);
+  width: var(--size-3);
+}
+
+.errSubTitle {
+  text-align: center;
+  font-size: var(--color-1);
+}
