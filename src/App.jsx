@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
-import Header from "./components/header/Header";
-import Sidebar from "./components/sidebar/Sidebar";
+import Header from "./components/Header/Header.jsx";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import styles from "./App.module.css";
 
 function App() {

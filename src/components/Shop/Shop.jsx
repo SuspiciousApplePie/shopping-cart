@@ -1,4 +1,4 @@
-import Product from "../product/Product.jsx";
+import Product from "../Product/Product.jsx";
 import { useOutletContext } from "react-router";
 import styles from "./Shop.module.css";
 import msgStyles from "../../App.module.css";

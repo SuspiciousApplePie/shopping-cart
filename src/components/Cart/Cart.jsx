@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router";
-import CartItem from "../cart_item/CartItem";
+import CartItem from "../CartItem/CartItem.jsx";
 import styles from "./Cart.module.css";
 import msgStyles from "../../App.module.css";
 
