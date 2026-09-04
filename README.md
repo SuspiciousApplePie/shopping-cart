@@ -31,41 +31,42 @@ npm run dev
 ## File Structure
 
 ```
-src/
 ├── App.jsx
 ├── App.module.css
 ├── App.test.jsx
 ├── assets
-│   ├── hero.png
-│   ├── react.svg
-│   └── vite.svg
+│   └── hero-img.jpg
 ├── components
-│   ├── cart
+│   ├── Cart
 │   │   ├── Cart.jsx
 │   │   ├── Cart.module.css
 │   │   ├── Cart.test.jsx
 │   │   └── integ_test.txt
-│   ├── cart_item
+│   ├── CartItem
 │   │   ├── CartItem.jsx
 │   │   ├── CartItem.module.css
 │   │   └── CartItem.test.jsx
-│   ├── header
+│   ├── ErrorPage
+│   │   ├── ErrorPage.jsx
+│   │   ├── ErrorPage.module.css
+│   │   └── ErrorPage.test.jsx
+│   ├── Header
 │   │   ├── Header.jsx
 │   │   ├── Header.module.css
 │   │   └── Header.test.jsx
-│   ├── homepage
+│   ├── Homepage
 │   │   ├── Homepage.jsx
 │   │   ├── Homepage.module.css
 │   │   └── Homepage.test.jsx
-│   ├── product
+│   ├── Product
 │   │   ├── Product.jsx
 │   │   ├── Product.module.css
 │   │   └── Product.test.jsx
-│   ├── shop
+│   ├── Shop
 │   │   ├── Shop.jsx
 │   │   ├── Shop.module.css
 │   │   └── Shop.test.jsx
-│   └── sidebar
+│   └── Sidebar
 │       ├── Sidebar.jsx
 │       ├── Sidebar.module.css
 │       └── Sidebar.test.jsx
