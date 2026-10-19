@@ -96,7 +96,7 @@ a.active .cartItemCount {
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
-    transform: translateX(calc(0));
+    transform: translateX(0);
     transition: transform 0.4s ease;
     width: 80vw;
     left: 0;
